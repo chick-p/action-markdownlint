@@ -1,0 +1,21 @@
+{
+  "name": "action-markdownlint",
+  "version": "0.0.1",
+  "description": "Run markdownlint with reivewdog based on https://github.com/reviewdog/action-eslint.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chick-p/action-markdownlint.git"
+  },
+  "keywords": [],
+  "author": "chick-p",
+  "license": "MIT",
+  "homepage": "https://github.com/chick-p/action-markdownlint#readme",
+  "devDependencies": {
+    "markdownlint": "^0.17.2",
+    "markdownlint-cli": "^0.19.0"
+  }
+}

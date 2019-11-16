@@ -1,0 +1,22 @@
+name: reviewdog
+on: [pull_request]
+jobs:
+  markdownlint:
+    name: runner / markdownlint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: true
+      - name: markdownlint-github-pr-check
+        uses: chick-p/action-markdownlint@v0.0.1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-check
+          markdownlint_flags: "testdata/*"
+      - name: markdownlint-github-pr-review
+        uses: chick-p/action-markdownlint@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          markdownlint_flags: "testdata/*"
