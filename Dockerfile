@@ -6,6 +6,6 @@ RUN apk --update add git && \
     rm /var/cache/apk/*
 
 COPY entrypoint.sh /entrypoint.sh
-COPY package.json /package.json
+COPY package.json package.json
 
 ENTRYPOINT ["sh", "/entrypoint.sh"]
