@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: markdownlint-github-pr-check
-        uses: chick-p/action-markdownlint@v0.0.1
+        uses: chick-p/action-markdownlint@v1
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-check
