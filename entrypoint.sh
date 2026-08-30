@@ -2,6 +2,10 @@
 
 cd "$GITHUB_WORKSPACE"
 
+# reviewdog's github-pr-review reporter shells out to git; the checkout is owned
+# by a different uid than the container user, so mark it safe.
+git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 if [ ! -x "./node_modules/.bin/markdownlint" ]; then
