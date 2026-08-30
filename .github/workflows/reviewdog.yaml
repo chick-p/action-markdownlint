@@ -7,13 +7,13 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: markdownlint-github-pr-check
-        uses: chick-p/action-markdownlint@v1
+        uses: ./
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-check
           markdownlint_flags: "testdata/*"
       - name: markdownlint-github-pr-review
-        uses: chick-p/action-markdownlint@v1
+        uses: ./
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
