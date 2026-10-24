@@ -1,0 +1,3 @@
+# 3 days, in minutes. Holds back freshly published versions to avoid pulling in
+# a compromised release before it is detected and unpublished.
+minimumReleaseAge: 4320

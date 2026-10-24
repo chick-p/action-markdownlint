@@ -8,15 +8,14 @@ git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-if [ ! -x "./node_modules/.bin/markdownlint" ]; then
-  npm install
-fi
+# Use the version pinned by this action's lockfile, not whatever the caller's repo has.
+MARKDOWNLINT=/action/node_modules/.bin/markdownlint
 
-./node_modules/.bin/markdownlint --version
+"$MARKDOWNLINT" --version
 
 # markdownlint-cli has no checkstyle formatter and prints violations to stderr as
 # "<file>:<line>[:<col>] <rule> <message>"; hand that to reviewdog via errorformat.
-./node_modules/.bin/markdownlint ${INPUT_MARKDOWNLINT_FLAGS:-.} 2>&1 \
+"$MARKDOWNLINT" ${INPUT_MARKDOWNLINT_FLAGS:-.} 2>&1 \
   | reviewdog \
       -efm="%f:%l:%c %m" \
       -efm="%f:%l %m" \
