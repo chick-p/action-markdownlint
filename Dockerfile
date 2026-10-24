@@ -1,6 +1,7 @@
 FROM node:current-alpine
 
-RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ v0.9.13
+ARG REVIEWDOG_VERSION=v0.21.2
+RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/${REVIEWDOG_VERSION}/install.sh | sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
 RUN apk --update add git && \
     rm -rf /var/lib/apt/lists/* && \
     rm /var/cache/apk/*
