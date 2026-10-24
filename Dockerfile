@@ -5,6 +5,15 @@ RUN apk --update add git && \
     rm -rf /var/lib/apt/lists/* && \
     rm /var/cache/apk/*
 
+# Unpinned on purpose: pnpm switches itself to the version in "packageManager"
+# of package.json (pmOnFail: download), which keeps that field the only place
+# the version is written.
+RUN npm install -g pnpm
+
+WORKDIR /action
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm install --frozen-lockfile
+
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["sh", "/entrypoint.sh"]
