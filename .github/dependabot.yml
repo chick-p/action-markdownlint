@@ -21,3 +21,8 @@ updates:
       day: saturday
     cooldown:
       default-days: 3
+    groups:
+      markdownlint:
+        patterns:
+          - markdownlint
+          - markdownlint-cli
