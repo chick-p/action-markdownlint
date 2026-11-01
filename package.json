@@ -16,7 +16,7 @@
   "homepage": "https://github.com/chick-p/action-markdownlint#readme",
   "devDependencies": {
     "markdownlint": "^0.42.0",
-    "markdownlint-cli": "^0.49.1"
+    "markdownlint-cli": "^0.50.0"
   },
   "packageManager": "pnpm@11.28.6"
 }
