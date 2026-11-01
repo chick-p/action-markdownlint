@@ -11,10 +11,12 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-check
+          filter_mode: nofilter
           markdownlint_flags: "testdata/*"
       - name: markdownlint-github-pr-review
         uses: ./
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
+          filter_mode: nofilter
           markdownlint_flags: "testdata/*"

@@ -21,4 +21,5 @@ MARKDOWNLINT=/action/node_modules/.bin/markdownlint
       -efm="%f:%l %m" \
       -name="markdownlint" \
       -reporter="${INPUT_REPORTER}" \
-      -level="${INPUT_LEVEL}"
+      -level="${INPUT_LEVEL}" \
+      -filter-mode="${INPUT_FILTER_MODE:-added}"

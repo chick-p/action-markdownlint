@@ -14,6 +14,11 @@ inputs:
       Default is github-pr-check.
       github-pr-review can use Markdown and add a link to rule page in reviewdog reports.
     default: 'github-pr-check'
+  filter_mode:
+    description: |
+      Filtering mode for reviewdog [added,diff_context,file,nofilter].
+      Default is added, which only reports findings on lines changed in the pull request.
+    default: 'added'
   markdownlint_flags:
     description: "Options of markdownlint command. Default: '.'"
     default: '.'
