@@ -1,6 +1,10 @@
 FROM node:24-alpine@sha256:06d7adf3e0ef61a13f1d28682726366f97a15aa1888c934d3ecec86c33918b53
 
-RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ v0.9.13
+# Stay on v0.14.1 or older: v0.14.2 derives the check run conclusion from
+# annotation levels, so an error-level finding turns the github-pr-check run red.
+# v0.9.16 is the first release that ships a linux/arm64 binary.
+ARG REVIEWDOG_VERSION=v0.14.1
+RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/${REVIEWDOG_VERSION}/install.sh | sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
 RUN apk --update add git && \
     rm -rf /var/lib/apt/lists/* && \
     rm /var/cache/apk/*
