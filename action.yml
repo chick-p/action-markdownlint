@@ -17,6 +17,9 @@ inputs:
   markdownlint_flags:
     description: "Options of markdownlint command. Default: '.'"
     default: '.'
+outputs:
+  violations:
+    description: 'Number of markdownlint violations found.'
 runs:
   using: 'docker'
   image: 'Dockerfile'

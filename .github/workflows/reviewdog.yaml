@@ -18,3 +18,30 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           markdownlint_flags: "testdata/*"
+  detect:
+    name: assert / markdownlint violations
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: lint a file with a violation
+        id: dirty
+        uses: ./
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: local
+          markdownlint_flags: "testdata/doc.md"
+      - name: lint a clean file
+        id: clean
+        uses: ./
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: local
+          markdownlint_flags: "testdata/clean/clean.md"
+      - name: assert violation counts
+        env:
+          DIRTY: ${{ steps.dirty.outputs.violations }}
+          CLEAN: ${{ steps.clean.outputs.violations }}
+        run: |
+          test "$DIRTY" = 1
+          test "$CLEAN" = 0
