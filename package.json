@@ -15,7 +15,7 @@
   "license": "MIT",
   "homepage": "https://github.com/chick-p/action-markdownlint#readme",
   "devDependencies": {
-    "markdownlint": "^0.42.1",
+    "markdownlint": "^0.42.2",
     "markdownlint-cli": "^0.50.0"
   },
   "packageManager": "pnpm@11.28.6"
